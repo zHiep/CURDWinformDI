@@ -1,4 +1,5 @@
 ﻿SELECT * FROM dbo.Customer
+GO
 
 --Update 
 CREATE PROCEDURE spKH_update
@@ -14,6 +15,7 @@ BEGIN
         PhoneNumber = @PhoneNumber
     WHERE Id = @Id;
 END
+GO
 
 --Insert
 CREATE PROCEDURE spKH_insert
@@ -26,6 +28,7 @@ BEGIN
     INSERT INTO dbo.Customer (Id,Name, Email, PhoneNumber)
     VALUES (@Id,@Name, @Email, @PhoneNumber);
 END
+GO
 
 --Delete
 CREATE PROCEDURE spKH_delete

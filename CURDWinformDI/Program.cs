@@ -19,13 +19,11 @@ namespace CURDWinformDI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Khởi tạo ServiceCollection
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
+            var services = new ServiceCollection();
+            ConfigureServices(services);
 
-            // Xây dựng ServiceProvider
-            ServiceProvider = serviceCollection.BuildServiceProvider();
+            ServiceProvider = services.BuildServiceProvider();
 
-            // Sử dụng DI để khởi tạo MainForm
             Application.Run(ServiceProvider.GetRequiredService<MainForm>());
         }
 
@@ -33,7 +31,7 @@ namespace CURDWinformDI
         {
             string connectionString = "Data Source=DESKTOP-NHH\\SQLEXPRESS;Initial Catalog=CURD;Integrated Security=True";
             services.AddSingleton<ICustomerService>(provider => new CustomerService(connectionString));
-            services.AddTransient<MainForm>();
+            services.AddSingleton<MainForm>();
         }
     }
 }
